@@ -1,0 +1,22 @@
+{
+  "name": "cafecacheckout",
+  "version": "1.0.0",
+  "description": "cafecacheckout page practise",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MerMerLtd/cafecaCheckout.git"
+  },
+  "keywords": [
+    "checkout"
+  ],
+  "author": "hazel liang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MerMerLtd/cafecaCheckout/issues"
+  },
+  "homepage": "https://github.com/MerMerLtd/cafecaCheckout#readme"
+}
