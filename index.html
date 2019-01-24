@@ -1,1 +1,70 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>checkout page</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card__side">
+                <div class="card__side--front">
+                <!-- <div class="card__side card__side--front"> -->
+                    <div class="card__pad">
+                        <p class="card__logo">&#9829;</p>
+                    </div>
+                </div>
+                <div class="card__side--back">
+                <!-- <div class="card__side card__side--back"> -->
+                    <div class="card__pad">
+                        <div class="card__img-box">
+                            <img src="./img/matchaCoffee.jpg" alt="img" class="card__img">
+                        </div>
+                        <div class="card__text-box">
+                            <h2 class="card__title">
+                                戴綠帽
+                            </h2>
+                            <p class="card__story">
+                                與你一輩子相伴的憧憬，我為此奮不顧身，三個人的雙人舞，終究曲終人散。
+                            </p>
+                            <p class="card__description">
+                                可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。
+                            </p>
+                        </div>
+                        <ul class="card__list">
+                            <li class="card__item">
+                                <label for="card__price-toggle">
+                                    <i class="fas fa-dollar-sign card__icon"></i> PRICE
+                                </label>
+                                <span class="card__price">&#x00024;180</span>
+                                <input type="checkbox" name="price" id="card__price-toggle">
+                            </li>
+                            <li class="card__item">
+                                <a href="#" class="card__link">
+                                    <i class="fas fa-map-marker-alt card__icon"></i> LOCATION
+                                </a>
+                            </li>
+                            <li class="card__item">
+                                <!-- http://www.w3school.com.cn/html/html_audio.ASP -->
+                                <label for="card__music-toggle">
+                                    <i class="far fa-play-circle card__icon"></i> MUSIC
+                                </label>
+                                <input type="checkbox" name="music" id="card__music-toggle">
+                                <audio controls="controls" height="100" width="100" class="card__music">
+                                    <source src="#" type="audio/mp3" />
+                                    <source src="#" type="audio/ogg" />
+                                    <embed height="100" width="100" src="song.mp3" />
+                                </audio>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

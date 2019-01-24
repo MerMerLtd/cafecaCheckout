@@ -4,7 +4,9 @@
   "description": "cafecacheckout page practise",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass sass/main.scss css/style.css",
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "deserver": "live-server"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/MerMerLtd/cafecaCheckout/issues"
   },
-  "homepage": "https://github.com/MerMerLtd/cafecaCheckout#readme"
+  "homepage": "https://github.com/MerMerLtd/cafecaCheckout#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.4.6",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.11.0"
+  }
 }
