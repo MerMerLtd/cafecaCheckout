@@ -38,8 +38,8 @@ loadCard = n => {
                 let shiftX = touchPoint.clientX - card.getBoundingClientRect().left;
                 let shiftY = touchPoint.clientY - card.getBoundingClientRect().top;
 
-                card.style.left = 150 + touchPoint.pageX - shiftX + 'px';
-                card.style.top = 225 + touchPoint.pageY - shiftY + 'px';
+                card.style.left = 150 + startX - shiftX + 'px';
+                card.style.top = 225 + startY - shiftY + 'px';
                 card.classList.remove("move-in");
     
                 // centers the card at (pageX, pageY) coordinates
@@ -64,6 +64,8 @@ loadCard = n => {
             
                 // drop the card, remove unneeded handlers
                 document.ontouchend = () => {
+                    card.style.left = 150 + startX - shiftX + 'px';
+                    card.style.top = 225 + startY - shiftY + 'px';
                     document.ontouchend = null;
                     document.ontouchmove = null;
                 }
