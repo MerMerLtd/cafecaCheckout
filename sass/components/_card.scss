@@ -1,25 +1,50 @@
 .card{
-    width: 80vw;
-    max-width: 337.5px;// max-width: 33.8rem; //? 為什麼我的1rem不是10px？
-    height: 60vh;
-    max-height: 450px; // max-height: 45rem;
+    display: none; // test;
+    //之後要根據不同手機尺寸切不同的 css size
+    // width: 80vw;
+    // max-width: 337.5px;// max-width: 33.8rem; //? 為什麼我的1rem不是10px？
+    // height: 60vh;
+    // max-height: 450px; // max-height: 45rem;
+    width: 300px;
+    height: 450px;
     border-radius: 5px;
-        // overflow: hidden;
+    overflow: hidden;
 
      // FUNCTIONALITY
     background-color: transparent;//green; //test
     perspective: 150rem;
     -moz-perspective: 150rem;
 
-    // position: relative;
-    @include absCenter;
+    //取代寫的absCenter 寫法
+    position: absolute;
+    top:0%;
+    left:0%;
+    // top:50%;// test
+    // left:50%; //test
+    margin-top: -225px; 
+    margin-left: -150px;
+    // @include absCenter;
 
-    animation: moveIn 1s;
-    animation-fill-mode: forwards;
-
+    &.move-in{
+        -webkit-transition: 1s ease-out;
+        -moz-transition: 1s ease-out;
+        -ms-transition: 1s ease-out;
+        -o-transition: 1s ease-out;
+        transition: 1s ease-out;
+        top:50% !important;
+        left:50% !important;
+        display: block;
+    }
 
     &.flip &__side{
         transform: rotateY(-180deg);        
+    }
+
+    &.ferry{
+        //動畫的做法
+        transform-origin: 50% 600px;// 參考 http://caibaojian.com/css3-animate-spin.html
+        animation: ferry 4s ease-in-out 0s infinite;
+        // animation-fill-mode: backwards
     }
 
     &__side{
@@ -27,7 +52,7 @@
         height: 100%;
         border-radius: 5px;
         // overflow: hidden;
-        box-shadow: 0.5rem 0.8rem 2rem rgba(0, 0, 0, 0.15);
+        box-shadow: 0.5rem 0.8rem 2rem rgba(0, 0, 0, 0.015);
            
         position: absolute;
         top:0;
@@ -46,15 +71,64 @@
         }
         &--front{
             // transform: rotateY(180deg);           
-            background-image: linear-gradient(to top left, #f3eed5, #f3eed5);
+            background-image: linear-gradient(to top left, #0a5d66, #72b6bd);
         }
         &--back{
             background-color: #fff;
             transform: rotateY(180deg);
         }
     }
-
-  
+ 
+    &__cover-left{
+        z-index: 2;
+        text-align: right;
+        position: absolute;
+        top: -120px;
+        left: 0;
+        padding-top: 40px;
+        height: 75px;
+        width: 100%;
+        color: #fff;
+        background-color: #2929618c;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 75px;
+            left: 0;
+            border-style:  solid;
+            height: 0;
+            // width: 100%;
+            border-width: 20px 169px 20px 169px;
+            // border-color: #2929618c #ededaa #eded #acac;
+            border-color: #2929618c #2929618c transparent transparent;
+        }
+    }
+    
+    &__cover-right{
+        z-index: 2;
+        text-align: left;
+        position: absolute;
+        top: -120px;
+        left: 0;
+        padding-top: 40px;
+        height: 75px;
+        width: 100%;
+        color: #fff;
+        background-color: #4a27618c;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 75px;
+            left: 0;
+            border-style:  solid;
+            height: 0;
+            // width: 100%;
+            border-width: 20px 169px 20px 169px;
+            // border-color: #4a27618c #ededaa #eded #acac;
+            border-color: #4a27618c  transparent transparent #4a27618c;
+        }
+    }
+   
 
     &__logo{
         font-size: 20rem;
@@ -75,8 +149,8 @@
         position: relative;
     }
     &__img{
-        // width: 100%;
-        width: 337.5px;
+        width: 100%;
+        // width: 337.5px;
         height: auto;
         background-position: bottom;
         position: absolute;
@@ -84,8 +158,8 @@
     }
     &__text-box{
         position: absolute;
-        bottom: 3vh;
-        left: 3vh;
+        top: 40%;
+        left: 8%;
         width: 50vw;
         max-width: 169px;
         height: 33vh;

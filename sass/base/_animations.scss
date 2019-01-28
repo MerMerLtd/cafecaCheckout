@@ -1,4 +1,4 @@
-@keyframes moveIn{
+@keyframes move-in{
     0%{
         top:30%;
         left:30%;
@@ -7,4 +7,18 @@
         top:50%;
         left:50%;
     }
+}
+
+@keyframes ferry{
+    0%,
+    // 50%, 
+    100%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(-15deg);
+    }
+    75%{
+        transform: rotate(15deg);
+    }    
 }
