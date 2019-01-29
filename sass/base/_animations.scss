@@ -10,9 +10,7 @@
 }
 
 @keyframes ferry{
-    0%,
-    // 50%, 
-    100%{
+    0%{
         transform: rotate(0deg);
     }
     25%{
@@ -20,5 +18,8 @@
     }
     75%{
         transform: rotate(15deg);
-    }    
+    }  
+    // 100%{
+    //     transform: rotate(3deg);  
+    // }  
 }

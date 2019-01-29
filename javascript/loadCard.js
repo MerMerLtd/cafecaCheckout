@@ -8,6 +8,7 @@ loadCard = n => {
     }
     cards.reverse();
     cardData.reverse();
+
     cards.forEach((card,index) => { 
         let timer = 500;
         // card.style.display = "none";
@@ -51,7 +52,7 @@ loadCard = n => {
                     card.style.left =  50 + '%'; //初始位置
                     card.style.top = 50 + '%';
                     card.classList.remove("move-in");
-                    card.style.transition = 0.2 + 's'; // test
+                    // card.style.transition = 0.2 + 's'; // test
                     
                     document.ontouchmove = event => {
                         // event.preventDefault();
@@ -79,7 +80,7 @@ loadCard = n => {
                         card.style.transform = `rotate(${angle}deg)`;
                         // console.log(`rotate(${angle} deg)`); //test
                         // card.style.left = 150 + touchPoint.pageX - shiftX + 'px';
-                        card.style.top = 225 + touchPoint.pageY - shiftY + 'px';
+                        card.style.top = 225 + touchPoint.pageY - shiftY + 'px'; 
                         isMove = true;
                     }
                 
@@ -87,6 +88,7 @@ loadCard = n => {
                     document.ontouchend = () => { 
                         let deltaT = + new Date() - startT;
                         card.style.top = 50 + '%';
+                        //改add & remove class的寫法
                         card.childNodes[1].style.opacity = "0%";
                         card.childNodes[1].style.top = "-120px";
                         card.childNodes[2].style.opacity = "0%";
@@ -98,14 +100,14 @@ loadCard = n => {
                                     card.style.transform = `rotate(90deg)`;
                                     console.log("right"); // test
                                     card.addEventListener("transitionend", ()=>{
-                                        // const cartBox = document.querySelector(".cart__box");
-                                        // cartBox.appendChild(card);
-                                        card.parentNode.removeChild(card);
+                                        const cartBox = document.querySelector(".cart__box");
+                                        cartBox.appendChild(card);
+                                        // card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
-                                            // console.log(cartItem);
-                                            cartItems.push(cardData[index]);
-                                            console.log(cardData[index]);
-                                            loadCart(cartItems.length);
+                                            // console.log(cartItems);
+                                            // cartItems.push(cardData[index]);
+                                            // console.log(cardData[index]);
+                                            // loadCart(cartItems.length);
                                             cards[index + 1].classList.add("flip--right"); //沒區別
                                         }
                                     }, false)
@@ -127,7 +129,7 @@ loadCard = n => {
                         document.ontouchend = null;
                         document.ontouchmove = null;
                     }
-                }
+                }  
             }
             // if(card.classList.contains("flip")){
                 card.addEventListener("transitionend", () => {

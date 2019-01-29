@@ -25,20 +25,20 @@ const cartItem = () => {
     const backImgBox = document.createElement("div");
     backImgBox.className = "card__img-box";
     const backImg = document.createElement("img");
-    backImg.src = `${cardData[cartItemID].img}`;
+    backImg.src = `${cartItems[cartItemID].img}`;
     backImg.className = "card__img";
 
     const backTextBox = document.createElement("div");
     backTextBox.className = "card__text-box";
     const backTitle = document.createElement("h2");
     backTitle.className = "card__title";
-    backTitle.innerText = `${cardData[cartItemID].product}`;
+    backTitle.innerText = `${cartItems[cartItemID].product}`;
     const backContentStory = document.createElement("p");
     backContentStory.className="card__story";
-    backContentStory.innerText = `${cardData[cartItemID].story}`;
+    backContentStory.innerText = `${cartItems[cartItemID].story}`;
     const backContentDescription= document.createElement("p");
     backContentDescription.className="card__description";
-    backContentDescription.innerText = `${cardData[cartItemID].description}`;
+    backContentDescription.innerText = `${cartItems[cartItemID].description}`;
 
     const backList = document.createElement("ul");
     backList.className = "card__list";
@@ -76,7 +76,7 @@ const cartItem = () => {
     backItemPlayLabel.innerText = "MUSIC";
 
     node.appendChild(side);
-    
+
 //   card.appendChild(side);
     side.appendChild(front);
     side.appendChild(back);
