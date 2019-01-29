@@ -45,7 +45,7 @@
     &.ferry{
         //動畫的做法
         // transform-origin: 50% 600px;// 參考 http://caibaojian.com/css3-animate-spin.html
-        animation: ferry 4s ease-in-out 0s 3;
+        animation: ferry 4s ease-in-out 0s infinite;
         // animation-fill-mode: backwards
     }
 
