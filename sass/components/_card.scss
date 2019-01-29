@@ -39,6 +39,12 @@
     }
 
     &.flip &__side{
+        transform: rotateY(180deg);        
+    }
+    &.flip--right &__side{
+        transform: rotateY(180deg);        
+    }
+    &.flip--left &__side{
         transform: rotateY(-180deg);        
     }
 
@@ -104,7 +110,7 @@
             // width: 100%;
             border-width: 20px 169px 20px 169px;
             // border-color: #2929618c #ededaa #eded #acac;
-            border-color: #2929618c #2929618c transparent transparent;
+            border-color: #2929618c transparent transparent #2929618c;
         }
     }
     
@@ -131,7 +137,7 @@
             // width: 100%;
             border-width: 20px 169px 20px 169px;
             // border-color: #4a27618c #ededaa #eded #acac;
-            border-color: #4a27618c  transparent transparent #4a27618c;
+            border-color: #4a27618c #4a27618c transparent transparent;
         }
     }
    

@@ -1,9 +1,62 @@
 let cardID = 0;
 let cards = [];
 
+const cardData = [
+    {
+        "product": "戴綠帽",
+        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
+        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
+        "img": "./img/matchaCoffee.jpg",
+        "price": 150,
+        "store": "三%比率咖啡",
+        "storeID": "TW00001",
+        "music": ""
+    },
+    {
+        "product": "一個人跳舞",
+        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
+        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
+        "img": "./img/matchaCoffee.jpg",
+        "price": 160,
+        "store": "三%比率咖啡",
+        "storeID": "TW00002",
+        "music": ""
+    },
+    {
+        "product": "窗邊看書",
+        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
+        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
+        "img": "./img/matchaCoffee.jpg",
+        "price": 170,
+        "store": "三%比率咖啡",
+        "storeID": "TW00003",
+        "music": ""
+    },
+    {
+        "product": "下雨天",
+        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
+        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
+        "img": "./img/matchaCoffee.jpg",
+        "price": 180,
+        "store": "三%比率咖啡",
+        "storeID": "TW00004",
+        "music": ""
+    },
+    {
+        "product": "普通的一天",
+        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
+        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
+        "img": "./img/matchaCoffee.jpg",
+        "price": 190,
+        "store": "硬性格咖啡",
+        "storeID": "TW00005",
+        "music": ""
+    },
+];
+
 // 卡片建構子
 const card = () => {
-    cardID++;
+    // cardID++;
     const node = document.createElement("div");
     node.className = "card";
     const side = document.createElement("div");
@@ -37,20 +90,20 @@ const card = () => {
     const backImgBox = document.createElement("div");
     backImgBox.className = "card__img-box";
     const backImg = document.createElement("img");
-    backImg.src = "./img/matchaCoffee.jpg";
+    backImg.src = `${cardData[cardID].img}`;
     backImg.className = "card__img";
 
     const backTextBox = document.createElement("div");
     backTextBox.className = "card__text-box";
     const backTitle = document.createElement("h2");
     backTitle.className = "card__title";
-    backTitle.innerText = "戴綠帽";
+    backTitle.innerText = `${cardData[cardID].product}`;
     const backContentStory = document.createElement("p");
     backContentStory.className="card__story";
-    backContentStory.innerText = "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。";
+    backContentStory.innerText = `${cardData[cardID].story}`;
     const backContentDescription= document.createElement("p");
     backContentDescription.className="card__description";
-    backContentDescription.innerText = "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。";
+    backContentDescription.innerText = `${cardData[cardID].description}`;
 
     const backList = document.createElement("ul");
     backList.className = "card__list";
@@ -128,6 +181,7 @@ const card = () => {
     backItemPlay.appendChild(backItemPlayToggle);
 
     cards.push(node);
+    cardID++;
     return node;
 }
 
