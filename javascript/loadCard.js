@@ -41,20 +41,15 @@ loadCard = n => {
                     let startY = touchPoint.pageY;
                     let shiftX = touchPoint.clientX - card.getBoundingClientRect().left;
                     let shiftY = touchPoint.clientY - card.getBoundingClientRect().top;
-                    let initialPosX = 0;
-                    let initialPosY = 0;
-                    // let currentPositionX = 0; 
-                    // let currentPositionY = 0; 
+                  
                     let maxX = 50; 
                     let maxY = 50; 
                     let moveLength = 0; 
-                    // initialPosX = currentPositionX;  
-                    // initialPosY = currentPositionY;  
 
                     card.style.left =  50 + '%'; //初始位置
                     card.style.top = 50 + '%';
                     card.classList.remove("move-in");
-                    // card.style.transition = 0.2 + 's'; // test
+                    card.style.transition = 0.2 + 's'; // test
                     
                     document.ontouchmove = event => {
                         // event.preventDefault();
@@ -62,32 +57,23 @@ loadCard = n => {
                         let touchPoint = event.targetTouches[0];
                         let deltaX = touchPoint.pageX - startX;
                         let deltaY = touchPoint.pageY - startY;
-                        let translateX = initialPosX + deltaX;
-                        let translateY = initialPosY + deltaY;
-
-                        if(translateX > maxX){
-                            translateX = maxX;
+                        let angle = 0;
+                        if(deltaX > 0){
+                            angle = 90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180;
+                        }else{
+                            angle = -(90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180);
                         }
-                        if(translateY > maxY){
-                            translateY = maxY;
-                        }
-                        if(translateX < -maxX){
-                            translateX = -maxX;
-                        }
-                        if(translateY < -maxY){
-                            translateY = -maxY;
-                        }
-                        console.log(`translate3d(${translateX}px, ${translateY}px, 0)`);
-                        card.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+                        card.style.transform = `rotate(${angle}deg)`;
+                        console.log(`rotate(${angle} deg)`);
+                       
                         // card.style.left = 150 + touchPoint.pageX - shiftX + 'px';
-                        // card.style.top = 225 + touchPoint.pageY - shiftY + 'px';
-                        
+                        card.style.top = 225 + touchPoint.pageY - shiftY + 'px';
                     }
                 
                     // drop the card, remove unneeded handlers
-                    document.ontouchend = () => {
-                        card.style.left =  50 + '%';//回到初始位置
+                    document.ontouchend = () => { 
                         card.style.top = 50 + '%';
+                        card.style.transform = `rotate(0deg)`;
                         document.ontouchend = null;
                         document.ontouchmove = null;
                     }
