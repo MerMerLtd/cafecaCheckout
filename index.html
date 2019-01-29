@@ -7,6 +7,7 @@
     <title>checkout page</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./javascript/cardConstructor.js"></script>
+    <script src="./javascript/cartItemConstructor.js"></script>
     <script src="./javascript/loadCard.js"></script>
     <!-- <script src="./javascript/touchCard.js"></script> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -79,10 +80,18 @@
                 </div>
             </div>
         </div>
+        <div class="cart">
+            <input type="checkbox" class="cart__checkbox" id="cart-toggle">
+
+            <label for="cart-toggle" class="cart__button">
+                <span class="cart__icon">&nbsp;</span>
+            </label>
+
+            <div class="cart__box">
+                    這裡可以放東西嗎？
+            </div>
+        </div>
     </div>
-    <!-- <div class="container">
-        這裡是購物車
-    </div> -->
     <script>
         loadCard();
     </script>

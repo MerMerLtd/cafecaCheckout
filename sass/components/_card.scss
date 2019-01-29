@@ -79,7 +79,7 @@
         }
         &--front{
             // transform: rotateY(180deg);           
-            background-image: linear-gradient(to top left, #0a5d66, #72b6bd);
+            background-image: linear-gradient(to top left, $brown, $brown);
         }
         &--back{
             background-color: #fff;
@@ -144,7 +144,7 @@
 
     &__logo{
         font-size: 20rem;
-        color: rgb(184, 149, 149);
+        color: $light-beige;
         @include absCenter;
     }
    

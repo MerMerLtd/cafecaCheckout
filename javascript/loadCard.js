@@ -1,3 +1,4 @@
+// const cartBox = document.querySelector(".cart__box");
 loadCard = n => {
     if(!n) {
         n = 5;
@@ -16,7 +17,6 @@ loadCard = n => {
         },timer*index);
        
     });
-    
 
     cards[(n-1)].addEventListener("transitionend", ()=>{
         cards[0].classList.add("flip");
@@ -98,9 +98,14 @@ loadCard = n => {
                                     card.style.transform = `rotate(90deg)`;
                                     console.log("right"); // test
                                     card.addEventListener("transitionend", ()=>{
+                                        // const cartBox = document.querySelector(".cart__box");
+                                        // cartBox.appendChild(card);
                                         card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
+                                            // console.log(cartItem);
+                                            cartItems.push(cardData[index]);
                                             console.log(cardData[index]);
+                                            loadCart(cartItems.length);
                                             cards[index + 1].classList.add("flip--right"); //沒區別
                                         }
                                     }, false)
@@ -110,7 +115,7 @@ loadCard = n => {
                                     card.addEventListener("transitionend", ()=>{
                                         card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
-                                            console.log(cardData[index]);
+                                            // console.log(cardData[index]);
                                             cards[index + 1].classList.add("flip--left");
                                         }
                                     }, false)

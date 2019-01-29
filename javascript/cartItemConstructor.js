@@ -1,85 +1,19 @@
-let cardID = 0;
-let cards = [];
-let cartItems = [];
-
-const cardData = [
-    {
-        "product": "戴綠帽",
-        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
-        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
-        "img": "./img/matchaCoffee.jpg",
-        "price": 150,
-        "store": "三%比率咖啡",
-        "storeID": "TW00001",
-        "music": ""
-    },
-    {
-        "product": "一個人跳舞",
-        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
-        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
-        "img": "./img/matchaCoffee.jpg",
-        "price": 160,
-        "store": "三%比率咖啡",
-        "storeID": "TW00002",
-        "music": ""
-    },
-    {
-        "product": "窗邊看書",
-        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
-        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
-        "img": "./img/matchaCoffee.jpg",
-        "price": 170,
-        "store": "三%比率咖啡",
-        "storeID": "TW00003",
-        "music": ""
-    },
-    {
-        "product": "下雨天",
-        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
-        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
-        "img": "./img/matchaCoffee.jpg",
-        "price": 180,
-        "store": "三%比率咖啡",
-        "storeID": "TW00004",
-        "music": ""
-    },
-    {
-        "product": "普通的一天",
-        "story": "與你一輩子相伴的憧憬，為此我奮不顧身，三個人的雙人舞，終究曲終人散。",
-        "description": "可以試試看微苦的抹茶配上香醇的拿鐵，最好是無糖，適合一個人搭配著酸甜的覆盆子蛋糕服用。",
-        "img": "./img/matchaCoffee.jpg",
-        "price": 190,
-        "store": "硬性格咖啡",
-        "storeID": "TW00005",
-        "music": ""
-    },
-];
+let cartItemID = 0;
 
 // 卡片建構子
-const card = () => {
-    // cardID++;
+const cartItem = () => {
+    // cartItemID++;
     const node = document.createElement("div");
     node.className = "card";
     const side = document.createElement("div");
     side.className = "card__side";
-
-    const coverRight = document.createElement("div");
-    coverRight.className = "card__cover-right";
-    const coverRightText = document.createElement("p");
-    coverRightText.className = "card__cover-text";
-    coverRightText.innerText = "一點也不誘人呢";
-    const coverLeft = document.createElement("div");
-    coverLeft.className = "card__cover-left";
-    const coverLeftText = document.createElement("p");
-    coverLeftText.className = "card__cover-text";
-    coverLeftText.innerHTML = "看起來很不錯耶 &#9829;";
     
     const front = document.createElement("div");
     front.className = "card__side--front";
     const frontPad = document.createElement("div");
     frontPad.className = "card__pad";
     const frontTitle = document.createElement("h2");
-    frontTitle.innerText = "Card " + cardID;
+    frontTitle.innerText = "CartItem" + cartItemID;
 //   const frontContent = document.createElement("p");
     frontPad.innerHTML = '<p class="card__logo">&#9829;</p>';
 
@@ -91,20 +25,20 @@ const card = () => {
     const backImgBox = document.createElement("div");
     backImgBox.className = "card__img-box";
     const backImg = document.createElement("img");
-    backImg.src = `${cardData[cardID].img}`;
+    backImg.src = `${cardData[cartItemID].img}`;
     backImg.className = "card__img";
 
     const backTextBox = document.createElement("div");
     backTextBox.className = "card__text-box";
     const backTitle = document.createElement("h2");
     backTitle.className = "card__title";
-    backTitle.innerText = `${cardData[cardID].product}`;
+    backTitle.innerText = `${cardData[cartItemID].product}`;
     const backContentStory = document.createElement("p");
     backContentStory.className="card__story";
-    backContentStory.innerText = `${cardData[cardID].story}`;
+    backContentStory.innerText = `${cardData[cartItemID].story}`;
     const backContentDescription= document.createElement("p");
     backContentDescription.className="card__description";
-    backContentDescription.innerText = `${cardData[cardID].description}`;
+    backContentDescription.innerText = `${cardData[cartItemID].description}`;
 
     const backList = document.createElement("ul");
     backList.className = "card__list";
@@ -142,14 +76,10 @@ const card = () => {
     backItemPlayLabel.innerText = "MUSIC";
 
     node.appendChild(side);
-    node.appendChild(coverRight);
-    node.appendChild(coverLeft);
+    
 //   card.appendChild(side);
     side.appendChild(front);
     side.appendChild(back);
-
-    coverRight.appendChild(coverRightText);
-    coverLeft.appendChild(coverLeftText);
 
     front.appendChild(frontPad);
     frontPad.appendChild(frontTitle);
@@ -182,8 +112,16 @@ const card = () => {
     backItemPlay.appendChild(backItemPlayToggle);
 
     cards.push(node);
-    cardID++;
+    cartItemID++;
     return node;
+}
+
+
+loadCart = n => {
+    for(var i = 0; i < n; i++) {
+        console.log("我被執行了")
+        document.getElementsByClassName("cart__box").item(0).appendChild(cartItem());   
+    }
 }
 
 

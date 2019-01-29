@@ -23,7 +23,7 @@
   box-sizing: inherit; }
 
 html {
-  background-color: #eee;
+  background-color: #f3f0eb;
   font-size: 62.5%; }
 
 body {
@@ -83,7 +83,7 @@ body {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden; }
     .card__side--front {
-      background-image: linear-gradient(to top left, #0a5d66, #72b6bd); }
+      background-image: linear-gradient(to top left, #695543, #695543); }
     .card__side--back {
       background-color: #fff;
       transform: rotateY(180deg); }
@@ -133,7 +133,7 @@ body {
       border-color: #4a27618c #4a27618c transparent transparent; }
   .card__logo {
     font-size: 20rem;
-    color: #b89595;
+    color: #f3eed5;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -191,3 +191,65 @@ body {
 
 input[type=checkbox] {
   display: none; }
+
+.cart__checkbox {
+  display: none; }
+
+.cart__button {
+  z-index: 3;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100px;
+  height: 60px;
+  margin-left: -50px;
+  background-color: #c7b76a;
+  text-align: center; }
+
+.cart__icon {
+  position: relative;
+  margin-top: 2.5rem; }
+  .cart__icon, .cart__icon::before, .cart__icon::after {
+    width: 3rem;
+    height: 3px;
+    background-color: #fff;
+    display: inline-block; }
+  .cart__icon::before, .cart__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .5s; }
+  .cart__icon::before {
+    top: -.8rem; }
+  .cart__icon::after {
+    top: .8rem; }
+
+.cart__button:hover .cart__icon::before {
+  top: -1rem; }
+
+.cart__button:hover .cart__icon::after {
+  top: 1rem; }
+
+.cart__checkbox:checked + .cart__button .cart__icon {
+  background-color: transparent; }
+
+.cart__checkbox:checked + .cart__button .cart__icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.cart__checkbox:checked + .cart__button .cart__icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
+
+.cart__box {
+  z-index: 2;
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
+
+.cart__checkbox:checked ~ .cart__box {
+  transform: translateY(-100vh); }
