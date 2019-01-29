@@ -61,7 +61,7 @@ body {
   .card.flip .card__side {
     transform: rotateY(-180deg); }
   .card.ferry {
-    animation: ferry 4s ease-in-out 0s 3; }
+    animation: ferry 4s ease-in-out 0s infinite; }
   .card__side {
     width: 100%;
     height: 100%;
@@ -84,9 +84,9 @@ body {
       background-color: #fff;
       transform: rotateY(180deg); }
   .card__cover-left {
-    display: none;
+    opacity: 0;
     z-index: 2;
-    text-align: right;
+    text-align: left;
     position: absolute;
     top: -120px;
     left: 0;
@@ -94,7 +94,8 @@ body {
     height: 75px;
     width: 100%;
     color: #fff;
-    background-color: #2929618c; }
+    background-color: #2929618c;
+    padding-left: 10px; }
     .card__cover-left::before {
       content: "";
       position: absolute;
@@ -105,9 +106,9 @@ body {
       border-width: 20px 169px 20px 169px;
       border-color: #2929618c #2929618c transparent transparent; }
   .card__cover-right {
-    display: none;
+    opacity: 0;
     z-index: 2;
-    text-align: left;
+    text-align: right;
     position: absolute;
     top: -120px;
     left: 0;
@@ -115,7 +116,8 @@ body {
     height: 75px;
     width: 100%;
     color: #fff;
-    background-color: #4a27618c; }
+    background-color: #4a27618c;
+    padding-right: 10px; }
     .card__cover-right::before {
       content: "";
       position: absolute;

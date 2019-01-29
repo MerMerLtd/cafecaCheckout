@@ -58,14 +58,24 @@ loadCard = n => {
                         let deltaX = touchPoint.pageX - startX;
                         let deltaY = touchPoint.pageY - startY;
                         let angle = 0;
+                        
                         if(deltaX > 0){
                             angle = 90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180;
+                            card.childNodes[2].style.transition = "0.5s";
+                            card.childNodes[2].style.opacity = "1";
+                            card.childNodes[2].style.top = "0px";
+                            card.childNodes[1].style.opacity = "0%";
+                            card.childNodes[1].style.top = "-120px";
                         }else{
                             angle = -(90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180);
+                            card.childNodes[1].style.transition = "0.5s";
+                            card.childNodes[1].style.opacity = "1";
+                            card.childNodes[1].style.top = "0px";
+                            card.childNodes[2].style.opacity = "0%";
+                            card.childNodes[2].style.top = "-120px";
                         }
                         card.style.transform = `rotate(${angle}deg)`;
-                        console.log(`rotate(${angle} deg)`);
-                       
+                        // console.log(`rotate(${angle} deg)`); //test
                         // card.style.left = 150 + touchPoint.pageX - shiftX + 'px';
                         card.style.top = 225 + touchPoint.pageY - shiftY + 'px';
                     }
@@ -74,6 +84,10 @@ loadCard = n => {
                     document.ontouchend = () => { 
                         card.style.top = 50 + '%';
                         card.style.transform = `rotate(0deg)`;
+                        card.childNodes[1].style.opacity = "0%";
+                        card.childNodes[1].style.top = "-120px";
+                        card.childNodes[2].style.opacity = "0%";
+                        card.childNodes[2].style.top = "-120px";
                         document.ontouchend = null;
                         document.ontouchmove = null;
                     }
