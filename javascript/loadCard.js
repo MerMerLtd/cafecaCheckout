@@ -47,6 +47,7 @@ loadCard = n => {
                     let deltaY = 0;
                   
                     let maxX = 50; 
+                    let minY = -50; 
                     let maxY = 50; 
                     let cardCoverBox = card.childNodes[1];
 
@@ -61,9 +62,8 @@ loadCard = n => {
                         let touchPoint = event.targetTouches[0];
                         let angle = 0;
                         deltaX = touchPoint.pageX - startX;
-                        deltaY = touchPoint.pageY - startY;
-                        
-                        
+                        deltaY = Math.min(Math.max(touchPoint.pageY - startY, minY), maxY);
+
                         if(deltaX > 0){
                             angle = 90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180;
                             if(cardCoverBox.classList.contains("show--left")){
@@ -79,9 +79,8 @@ loadCard = n => {
                             cardCoverBox.classList.add("show--left");
                         }
                         card.style.transform = `rotate(${angle}deg)`;
-                        // console.log(`rotate(${angle} deg)`); //test
-                        // card.style.left = 150 + touchPoint.pageX - shiftX + 'px';
-                        card.style.top = 225 + touchPoint.pageY - shiftY + 'px'; 
+                       
+                        card.style.top = 225 + startY + deltaY - shiftY + 'px'; 
                         isMove = true;
                     }
                 
@@ -91,7 +90,7 @@ loadCard = n => {
                         card.style.top = 50 + '%';
                         cardCoverBox.classList.remove("show--left"); //改add & remove class的寫法
                         cardCoverBox.classList.remove("show--right");
-                        
+
                         if(isMove){
                             if(deltaT < 300 || Math.abs(deltaX) > maxX){
                                 card.style.transition = "1s ease-in";
