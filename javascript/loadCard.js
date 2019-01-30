@@ -48,6 +48,7 @@ loadCard = n => {
                   
                     let maxX = 50; 
                     let maxY = 50; 
+                    let cardCoverBox = card.childNodes[1];
 
                     card.style.left =  50 + '%'; //初始位置
                     card.style.top = 50 + '%';
@@ -62,20 +63,20 @@ loadCard = n => {
                         deltaX = touchPoint.pageX - startX;
                         deltaY = touchPoint.pageY - startY;
                         
+                        
                         if(deltaX > 0){
                             angle = 90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180;
-                            card.childNodes[2].style.transition = "0.5s";
-                            card.childNodes[2].style.opacity = "1";
-                            card.childNodes[2].style.top = "0px";
-                            card.childNodes[1].style.opacity = "0%";
-                            card.childNodes[1].style.top = "-120px";
+                            if(cardCoverBox.classList.contains("show--left")){
+                                cardCoverBox.classList.remove("show--left");
+                            }
+                            cardCoverBox.classList.add("show--right");
+
                         }else{
                             angle = -(90 - Math.atan(600/Math.abs(deltaX))/Math.PI*180);
-                            card.childNodes[1].style.transition = "0.5s";
-                            card.childNodes[1].style.opacity = "1";
-                            card.childNodes[1].style.top = "0px";
-                            card.childNodes[2].style.opacity = "0%";
-                            card.childNodes[2].style.top = "-120px";
+                            if(cardCoverBox.classList.contains("show--right")){
+                                cardCoverBox.classList.remove("show--right");
+                            }
+                            cardCoverBox.classList.add("show--left");
                         }
                         card.style.transform = `rotate(${angle}deg)`;
                         // console.log(`rotate(${angle} deg)`); //test
@@ -88,11 +89,9 @@ loadCard = n => {
                     document.ontouchend = () => { 
                         let deltaT = + new Date() - startT;
                         card.style.top = 50 + '%';
-                        //改add & remove class的寫法
-                        card.childNodes[1].style.opacity = "0%";
-                        card.childNodes[1].style.top = "-120px";
-                        card.childNodes[2].style.opacity = "0%";
-                        card.childNodes[2].style.top = "-120px";
+                        cardCoverBox.classList.remove("show--left"); //改add & remove class的寫法
+                        cardCoverBox.classList.remove("show--right");
+                        
                         if(isMove){
                             if(deltaT < 300 || Math.abs(deltaX) > maxX){
                                 card.style.transition = "1s ease-in";

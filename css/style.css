@@ -68,6 +68,8 @@ body {
     transform: rotateY(-180deg); }
   .card.ferry {
     animation: ferry 4s ease-in-out 0s infinite; }
+  .card.rollout {
+    transition: rotate 5s ease-in; }
   .card__side {
     width: 100%;
     height: 100%;
@@ -88,10 +90,9 @@ body {
     .card__side--back {
       background-color: #fff;
       transform: rotateY(180deg); }
-  .card__cover-left {
+  .card__cover {
     opacity: 0;
     z-index: 2;
-    text-align: left;
     position: absolute;
     top: -120px;
     left: 0;
@@ -99,9 +100,9 @@ body {
     height: 75px;
     width: 100%;
     color: #fff;
-    background-color: #2929618c;
-    padding-left: 10px; }
-    .card__cover-left::before {
+    padding-left: 10px;
+    transition: all 0.5s; }
+    .card__cover::before {
       content: "";
       position: absolute;
       top: 75px;
@@ -110,28 +111,28 @@ body {
       height: 0;
       border-width: 20px 169px 20px 169px;
       border-color: #2929618c transparent transparent #2929618c; }
-  .card__cover-right {
-    opacity: 0;
-    z-index: 2;
-    text-align: right;
-    position: absolute;
+    .card__cover--left {
+      text-align: left;
+      background-color: #2929618c; }
+      .card__cover--left::before {
+        border-color: #2929618c transparent transparent #2929618c; }
+    .card__cover--right {
+      text-align: right;
+      background-color: #4a27618c; }
+      .card__cover--right::before {
+        border-color: #4a27618c #4a27618c transparent transparent; }
+  .card .show--right .card__cover:first-child {
     top: -120px;
-    left: 0;
-    padding-top: 40px;
-    height: 75px;
-    width: 100%;
-    color: #fff;
-    background-color: #4a27618c;
-    padding-right: 10px; }
-    .card__cover-right::before {
-      content: "";
-      position: absolute;
-      top: 75px;
-      left: 0;
-      border-style: solid;
-      height: 0;
-      border-width: 20px 169px 20px 169px;
-      border-color: #4a27618c #4a27618c transparent transparent; }
+    opacity: 0; }
+  .card .show--right .card__cover:last-child {
+    top: 0px;
+    opacity: 1; }
+  .card .show--left .card__cover:first-child {
+    top: 0px;
+    opacity: 1; }
+  .card .show--left .card__cover:last-child {
+    top: -120px;
+    opacity: 0; }
   .card__logo {
     font-size: 20rem;
     color: #f3eed5;

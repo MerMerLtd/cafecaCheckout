@@ -63,13 +63,15 @@ const card = () => {
     const side = document.createElement("div");
     side.className = "card__side";
 
+    const coverBox = document.createElement("div");
+    coverBox.className = "card__cover-box"
     const coverRight = document.createElement("div");
-    coverRight.className = "card__cover-right";
+    coverRight.className = "card__cover card__cover--right";
     const coverRightText = document.createElement("p");
     coverRightText.className = "card__cover-text";
     coverRightText.innerText = "一點也不誘人呢";
     const coverLeft = document.createElement("div");
-    coverLeft.className = "card__cover-left";
+    coverLeft.className = "card__cover card__cover--left";
     const coverLeftText = document.createElement("p");
     coverLeftText.className = "card__cover-text";
     coverLeftText.innerHTML = "看起來很不錯耶 &#9829;";
@@ -142,11 +144,14 @@ const card = () => {
     backItemPlayLabel.innerText = "MUSIC";
 
     node.appendChild(side);
-    node.appendChild(coverRight);
-    node.appendChild(coverLeft);
+    node.appendChild(coverBox);
+   
 //   card.appendChild(side);
     side.appendChild(front);
     side.appendChild(back);
+
+    coverBox.appendChild(coverRight);
+    coverBox.appendChild(coverLeft);
 
     coverRight.appendChild(coverRightText);
     coverLeft.appendChild(coverLeftText);
