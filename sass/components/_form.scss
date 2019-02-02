@@ -1,0 +1,75 @@
+.form{
+    &__group{
+        margin-bottom: 20px;
+    }
+    &__input{
+        font-size: 16px;
+        padding: 5px 3px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-radius: 2px;
+        display: inline-block;
+        transition: all .3s;
+        border-bottom: 3px solid transparent;
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $hazel;
+        }
+        &:focus:invalid {
+            border-bottom: 3px solid $winter-hazel-1;
+        }
+    }
+
+    .order__credit &__input{
+        width: 60px;
+    }
+    .order__contact &__label{
+        display: inline;
+    }
+    .order__contact &__input{
+        float: right;
+    }
+    &__label{
+        font-size: 16px;
+        display: block;
+        margin-bottom: 5px;
+    }
+    &__checkbox-label {
+        font-size: 12px;
+        color: $winter-hazel-1;
+        cursor: pointer;
+        position: relative;
+        padding-left: 20px;
+    }
+
+    &__checkbox-button {
+        height: 16px;
+        width: 16px;
+        border: 2px solid $hazel;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $hazel;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+
+    &__checkbox-input:checked ~ &__checkbox-label &__checkbox-button::after {
+        opacity: 1;
+    }
+}

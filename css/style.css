@@ -26,12 +26,33 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow: hidden; }
 
-.container {
-  position: fixed;
-  width: 100%;
-  height: 100%; }
+.heading-primary {
+  font-size: 2.4rem;
+  font-weight: 300;
+  margin-bottom: 1rem; }
+
+.btn, .btn:link, .btn:visited {
+  color: #776536;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 15px;
+  display: inline-block;
+  border-radius: 2px;
+  transition: all .2s;
+  position: relative;
+  font-size: 16px;
+  width: 180px; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
 
 .card {
   display: none;
@@ -40,8 +61,8 @@ body {
   border-radius: 5px;
   overflow: hidden;
   background-color: transparent;
-  perspective: 150rem;
-  -moz-perspective: 150rem;
+  perspective: 450rem;
+  -moz-perspective: 450rem;
   position: absolute;
   top: 0%;
   left: 0%;
@@ -198,7 +219,7 @@ input[type=checkbox] {
   display: none; }
 
 .cart__button {
-  z-index: 3;
+  z-index: 10;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -244,7 +265,7 @@ input[type=checkbox] {
   transform: rotate(-135deg); }
 
 .cart__box {
-  z-index: 2;
+  z-index: 5;
   position: absolute;
   top: 100vh;
   left: 0;
@@ -255,3 +276,205 @@ input[type=checkbox] {
 
 .cart__checkbox:checked ~ .cart__box {
   transform: translateY(-100vh); }
+
+.cart__checkout {
+  text-align: center;
+  padding: 15px;
+  width: 338px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #e2ddd4; }
+
+.cart__checkout-button, .cart__checkout-button:link, .cart__checkout-button:visited {
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 300;
+  text-align: center; }
+
+.cart-item__container {
+  height: 70%;
+  width: 338px;
+  width: 90%;
+  margin: 20% auto 0;
+  background-color: #f3f0eb; }
+
+.cart-item__box {
+  width: 100%;
+  height: 180px;
+  border-bottom: 1px solid #fdfdfd;
+  padding: 15px;
+  position: relative; }
+  .cart-item__box::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .cart-item__box .card__img {
+    position: relative;
+    float: left;
+    width: 150px;
+    height: 150px; }
+  .cart-item__box .card__title {
+    float: left;
+    margin-left: 10px;
+    color: #776536; }
+  .cart-item__box .card__list {
+    position: relative;
+    float: left;
+    margin-left: 10px;
+    top: 0;
+    left: 0;
+    list-style: none; }
+
+.cart-item__delete, .cart-item__delete:link, .cart-item__delete:visited {
+  text-decoration: none;
+  font-size: 20px;
+  color: #776536;
+  position: absolute;
+  bottom: 15px;
+  right: 15px; }
+
+.dot-box {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center; }
+
+.dot {
+  cursor: pointer;
+  height: .8rem;
+  width: .8rem;
+  margin: 0 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease; }
+
+.active, .dot:hover {
+  background-color: #717171; }
+
+.form__group {
+  margin-bottom: 20px; }
+
+.form__input {
+  font-size: 16px;
+  padding: 5px 3px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  transition: all .3s;
+  border-bottom: 3px solid transparent; }
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #776536; }
+  .form__input:focus:invalid {
+    border-bottom: 3px solid #c7b76a; }
+
+.order__credit .form__input {
+  width: 60px; }
+
+.order__contact .form__label {
+  display: inline; }
+
+.order__contact .form__input {
+  float: right; }
+
+.form__label {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 5px; }
+
+.form__checkbox-label {
+  font-size: 12px;
+  color: #c7b76a;
+  cursor: pointer;
+  position: relative;
+  padding-left: 20px; }
+
+.form__checkbox-button {
+  height: 16px;
+  width: 16px;
+  border: 2px solid #776536;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  .form__checkbox-button::after {
+    content: "";
+    display: block;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #776536;
+    opacity: 0;
+    transition: opacity .2s; }
+
+.form__checkbox-input:checked ~ .form__checkbox-label .form__checkbox-button::after {
+  opacity: 1; }
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
+.order {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #e8d199; }
+  .order__container {
+    height: 75%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .order__card {
+    position: absolute;
+    margin-left: -169px;
+    margin-top: -225px;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    width: 338px;
+    height: 450px;
+    background-color: #f3f0eb;
+    color: #776536; }
+    .order__card .btn {
+      margin: 0 auto; }
+  .order__title {
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-bottom: 1rem; }
+  .order__item::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .order__item .card__title {
+    font-size: 16px;
+    display: inline-block; }
+  .order__item .card__price {
+    display: inline-block;
+    line-height: 2.4;
+    float: right; }
+  .order__price {
+    float: right;
+    font-size: 20px;
+    font-weight: 300; }
+  .order__cancle {
+    position: absolute;
+    font-size: 20px;
+    color: #bbb;
+    bottom: 0;
+    margin-left: -12px;
+    left: 50%; }
+  .order__btn-box {
+    text-align: center; }

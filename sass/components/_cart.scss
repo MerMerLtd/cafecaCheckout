@@ -4,7 +4,7 @@
         display: none;
     }
     &__button{
-        z-index: 3;
+        z-index: 10;
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -63,7 +63,7 @@
     }
 
     &__box{
-        z-index: 2;
+        z-index: 5;
         position: absolute;
         top: 100vh;
         left: 0;
@@ -76,5 +76,25 @@
     //FUNCTIONALITY
     &__checkbox:checked ~ &__box {
         transform: translateY(-100vh);
+    }
+
+    &__checkout{
+        text-align: center;
+        padding: 15px;
+        width: 338px;
+        width: 90%;
+        margin: 0 auto;
+        background-color: #e2ddd4;
+    }
+    &__checkout-button{
+        &,
+        &:link,
+        &:visited,{
+            text-decoration: none;
+            font-size: 24px;
+            color: #fff;
+            font-weight: 300;
+            text-align: center;
+        }
     }
 }

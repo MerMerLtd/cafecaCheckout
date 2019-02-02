@@ -23,9 +23,11 @@ loadCard = n => {
         cards[0].classList.add("flip");
         const addFerry = () => {
             cards[0].classList.add("ferry");
-            cards[0].addEventListener("touchend", event => {
+            const removeFerry = () => {
                 cards[0].classList.remove("ferry");
-            }, false);
+                cards[0].removeEventListener("touchend", removeFerry);
+            }
+            cards[0].addEventListener("touchend", removeFerry, false);
             cards[0].removeEventListener("transitionend", addFerry);
         }
         cards[0].addEventListener("transitionend", addFerry, false);
@@ -88,24 +90,21 @@ loadCard = n => {
                     document.ontouchend = () => { 
                         let deltaT = + new Date() - startT;
                         card.style.top = 50 + '%';
+                        card.style.transform = `rotate(0deg)`;
                         cardCoverBox.classList.remove("show--left"); //改add & remove class的寫法
                         cardCoverBox.classList.remove("show--right");
 
                         if(isMove){
                             if(deltaT < 300 || Math.abs(deltaX) > maxX){
-                                card.style.transition = "1s ease-in";
+                                card.style.transition = "2s ease-in";
                                 if(deltaX > 0){
-                                    card.style.transform = `rotate(90deg)`;
                                     console.log("right"); // test
+                                    card.style.transform = `rotate(90deg)`;
                                     card.addEventListener("transitionend", ()=>{
                                         const cartBox = document.querySelector(".cart__box");
-                                        cartBox.appendChild(card);
+                                        // cartBox.appendChild(card);
                                         // card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
-                                            // console.log(cartItems);
-                                            // cartItems.push(cardData[index]);
-                                            // console.log(cardData[index]);
-                                            // loadCart(cartItems.length);
                                             cards[index + 1].classList.add("flip--right"); //沒區別
                                         }
                                     }, false)
@@ -113,7 +112,7 @@ loadCard = n => {
                                     card.style.transform = `rotate(-90deg)`;
                                     console.log("left") // test
                                     card.addEventListener("transitionend", ()=>{
-                                        card.parentNode.removeChild(card);
+                                        // card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
                                             // console.log(cardData[index]);
                                             cards[index + 1].classList.add("flip--left");

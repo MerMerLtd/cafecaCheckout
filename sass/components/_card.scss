@@ -12,8 +12,8 @@
 
      // FUNCTIONALITY
     background-color: transparent;//green; //test
-    perspective: 150rem;
-    -moz-perspective: 150rem;
+    perspective: 450rem;
+    -moz-perspective: 450rem;
 
     //取代寫的absCenter 寫法
     position: absolute;
@@ -42,6 +42,7 @@
     }
 
     &.flip &__side{
+    
         transform: rotateY(180deg);        
     }
     &.flip--right &__side{
