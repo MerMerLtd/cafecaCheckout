@@ -24,4 +24,14 @@
             opacity: 0;
         }
     }
+
+    &--checkout{
+        &,
+        &:link,
+        &:visited {
+            font-weight: 300;
+            font-size: 20px;
+            border-bottom: 2px solid $hazel;
+        }
+    }
 }
