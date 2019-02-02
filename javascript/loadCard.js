@@ -102,6 +102,12 @@ loadCard = n => {
                                     card.style.transform = `rotate(90deg)`;
                                     card.addEventListener("transitionend", ()=>{
                                         const cartBox = document.querySelector(".cart__box");
+
+                                        // 滑動卡片加到購物車 ❤️
+                                        // 購物車卡片建構子 ❤️
+                                        // load 購物車 ❤ ️❤️
+
+
                                         // cartBox.appendChild(card);
                                         // card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){

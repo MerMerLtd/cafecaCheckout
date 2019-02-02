@@ -1,6 +1,5 @@
 
 let cartItemID = 0;
-
 // 卡片建構子
 const cartItem = () => {
    
