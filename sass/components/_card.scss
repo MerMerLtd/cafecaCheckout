@@ -31,25 +31,19 @@
         box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.15);
       }
     &.move-in{
-        -webkit-transition: 1s ease-out;
-        -moz-transition: 1s ease-out;
-        -ms-transition: 1s ease-out;
-        -o-transition: 1s ease-out;
-        transition: 1s ease-out;
+        -webkit-transition: 0.5s ease-out;
+        -moz-transition: 0.5s ease-out;
+        -ms-transition: 0.5s ease-out;
+        -o-transition: 0.5s ease-out;
+        transition: 0.5s ease-out;
         top:50%;
         left:50%;
         display: block;
     }
 
     &.flip &__side{
-    
+        transition: 1s ease-out;
         transform: rotateY(180deg);        
-    }
-    &.flip--right &__side{
-        transform: rotateY(180deg);        
-    }
-    &.flip--left &__side{
-        transform: rotateY(-180deg);        
     }
 
     &.ferry{
@@ -57,17 +51,6 @@
         // transform-origin: 50% 600px;// 參考 http://caibaojian.com/css3-animate-spin.html
         animation: ferry 4s ease-in-out 0s infinite;
         // animation-fill-mode: backwards
-    }
-
-    &.rollout{
-        transition: rotate 5s ease-in;
-        // &--left{
-        //     transform: rotate(-90deg);
-        // }
-        // &--right{
-        //     transform: rotate(90deg);
-        // }
-        //沒辦法使用這個方法的原因是因為我在touch move 改變rotate時是寫在html 上有最高優先權
     }
 
     &__side{

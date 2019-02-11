@@ -10,7 +10,7 @@ loadCard = n => {
     cardData.reverse();
 
     cards.forEach((card,index) => { 
-        let timer = 500;
+        let timer = 250;
         // card.style.display = "none";
         card.style.display = "block";
         setTimeout(() => { 
@@ -19,17 +19,27 @@ loadCard = n => {
        
     });
 
-    cards[(n-1)].addEventListener("transitionend", ()=>{
-        cards[0].classList.add("flip");
-        const addFerry = () => {
-            cards[0].classList.add("ferry");
-            const removeFerry = () => {
-                cards[0].classList.remove("ferry");
-                cards[0].removeEventListener("touchend", removeFerry);
-            }
-            cards[0].addEventListener("touchend", removeFerry, false);
-            cards[0].removeEventListener("transitionend", addFerry);
+    let ferried = false;
+     //卡片搖擺的method
+    const addFerry = () => {
+        if(ferried) return;
+        cards[0].classList.add("ferry");
+        const removeFerry = () => {
+            cards[0].classList.remove("ferry");
+            cards[0].removeEventListener("touchend", removeFerry);
         }
+        ferried  = true;
+    
+        // 
+        cards[0].addEventListener("touchend", removeFerry, false);
+        cards[0].removeEventListener("transitionend", addFerry);
+    }
+
+    cards[(n-1)].addEventListener("transitionend", ()=>{
+        //全部卡片進入畫面後翻開第一張進入的卡片
+        cards[0].classList.add("flip");
+
+        //翻開卡片後 transitionend 加入搖擺
         cards[0].addEventListener("transitionend", addFerry, false);
 
         cards.forEach((card, index) => {
@@ -58,7 +68,10 @@ loadCard = n => {
                     card.classList.remove("move-in");
                     // card.style.transition = 0.2 + 's'; // test
                     
-                    document.ontouchmove = event => {
+
+                    // document.ontouchmove =
+                    
+                    const touchmove = event => {
                         // event.preventDefault();
                         if (isTouchEnd) return ;
                         let touchPoint = event.targetTouches[0];
@@ -85,9 +98,12 @@ loadCard = n => {
                         card.style.top = 225 + startY + deltaY - shiftY + 'px'; 
                         isMove = true;
                     }
+
+                    card.addEventListener("touchmove", touchmove, false);
                 
                     // drop the card, remove unneeded handlers
-                    document.ontouchend = () => { 
+                    // document.ontouchend = 
+                    const touchend = () => { 
                         let deltaT = + new Date() - startT;
                         card.style.top = 50 + '%';
                         card.style.transform = `rotate(0deg)`;
@@ -96,32 +112,33 @@ loadCard = n => {
 
                         if(isMove){
                             if(deltaT < 300 || Math.abs(deltaX) > maxX){
-                                card.style.transition = "2s ease-in";
+                                card.style.transition = ".5s ease-in";
                                 if(deltaX > 0){
                                     console.log("right"); // test
                                     card.style.transform = `rotate(90deg)`;
-                                    card.addEventListener("transitionend", ()=>{
+                                    card.addEventListener("transitionend", (event) => {
+                                        if(event.propertyName !== 'transform') return; //❤
                                         const cartBox = document.querySelector(".cart__box");
-
                                         // 滑動卡片加到購物車 ❤️
                                         // 購物車卡片建構子 ❤️
-                                        // load 購物車 ❤ ️❤️
-
-
+                                        // load 購物車  ️❤️
                                         // cartBox.appendChild(card);
                                         // card.parentNode.removeChild(card);
                                         if(index < cards.length - 1){
-                                            cards[index + 1].classList.add("flip--right"); //沒區別
+                                            cards[index + 1].classList.add("flip"); //沒區別
                                         }
                                     }, false)
                                 }else{
                                     card.style.transform = `rotate(-90deg)`;
-                                    console.log("left") // test
-                                    card.addEventListener("transitionend", ()=>{
-                                        // card.parentNode.removeChild(card);
+                                    card.addEventListener("transitionend", (event)=>{
+                                        if(event.propertyName !== 'transform') return;
+                                        card.parentNode.prepend(card);
+                                        card.style.transform = `rotate(0deg)`;
+                                        card.classList.remove("flip");
+                                       
+                                        console.log('Yo!');
                                         if(index < cards.length - 1){
-                                            // console.log(cardData[index]);
-                                            cards[index + 1].classList.add("flip--left");
+                                            cards[index + 1].classList.add("flip");
                                         }
                                     }, false)
                                 }
@@ -132,6 +149,7 @@ loadCard = n => {
                         document.ontouchend = null;
                         document.ontouchmove = null;
                     }
+                    card.addEventListener("touchend", touchend, false);
                 }  
             }
             // if(card.classList.contains("flip")){

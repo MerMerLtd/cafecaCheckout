@@ -1,6 +1,7 @@
 let cardID = 0;
 let cards = [];
 let cartItems = [];
+let cartItemData = [];
 
 const cardData = [
     {
