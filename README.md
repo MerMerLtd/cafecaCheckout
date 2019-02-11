@@ -1,37 +1,66 @@
-## Welcome to GitHub Pages
+# cafecaCheckout
 
-You can use the [editor on GitHub](https://github.com/MerMerLtd/cafecaCheckout/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+## Deploy
+### 安裝函式庫
+```shell
+bash <(curl https://raw.githubusercontent.com/Luphia/SIMPLE/master/shell/install-simple.sh -kL)
+sudo apt-get update
+sudo apt-get install openssl libtool autoconf automake uuid-dev build-essential gcc g++ software-properties-common unzip make git libcap2-bin python -y
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### 初始化資料夾
+```shell
+sudo mkdir /etc/cafecaCheckout
+sudo chown ubuntu /etc/cafecaCheckout
+sudo mkdir /etc/Cafeca-Backend
+sudo chown ubuntu /etc/Cafeca-Backend
+```
 
-### Jekyll Themes
+### 複製專案
+```shell
+https://github.com/MerMerLtd/cafecaCheckout
+https://github.com/MerMerLtd/Cafeca-Backend
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MerMerLtd/cafecaCheckout/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 安裝相依套件
+```shell
+cd /etc/cafecaCheckout && npm i && npm i --dev live-server
+cd /etc/Cafeca-Backend && npm i
+```
 
-### Support or Contact
+### 設定參數
+```shell
+mkdir /etc/Cafeca-Backend/private/
+cp /etc/Cafeca-Backend/sample.config.toml /etc/Cafeca-Backend/private/config.toml
+vi /etc/Cafeca-Backend/private/config.toml
+```
+```file
+# CafecaBackend Default Config
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+title = "CafecaBackend"
+
+[base]
+folder = "CafecaBE"
+static = "/etc/cafecaCheckout"
+debug = false
+
+[blockchain]
+type = "ethereum"
+
+[database]
+type = "firebase"
+
+[api]
+pathname = [
+  "get | /,/version | Static.Utils.readPackageInfo",
+  "get | /api/questions | Bot.FindCafeca.getQuestions",
+  "get | /api/suggestion | Bot.FindCafeca.getSuggestion",
+  "get | /api/store/:storeID | Bot.FindCafeca.getStore",
+  "get | /policy/* | Static.Utils.readPackageInfo"
+]
+```
+
+### 啟動伺服器
+```shell
+pm2 start /etc/Cafeca-Backend/ --name Cafeca
+```
